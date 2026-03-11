@@ -1,110 +1,213 @@
-# 📊 Brazilian E-commerce Data Analysis (Power BI)
+# 📊 Phân tích dữ liệu E-commerce Brazil (Power BI)
 
-An end-to-end data analysis project built using Power BI on the Brazilian Olist E-commerce dataset.
+Đây là một dự án **phân tích dữ liệu end-to-end** sử dụng dataset thương mại điện tử Brazil (Olist).
+Mục tiêu của dự án là phân tích **hiệu suất bán hàng, hành vi khách hàng, hiệu quả sản phẩm và seller** để tìm ra các insight có giá trị cho doanh nghiệp.
 
-The objective of this project is to analyze **sales performance, customer behavior, product trends, and seller efficiency** to uncover actionable business insights.
-
-This project demonstrates the **full data analysis workflow**, from data modeling to dashboard storytelling.
+Dự án mô phỏng **quy trình làm việc thực tế của một Data Analyst**, từ lưu trữ dữ liệu, tiền xử lý dữ liệu cho đến xây dựng dashboard phân tích.
 
 ---
 
-# 🚀 Project Highlights
+# 🚀 Điểm nổi bật của dự án
 
-Unlike many typical Power BI dashboards that simply visualize imported data, this project focuses on:
+Khác với nhiều dashboard Power BI thông thường chỉ import dữ liệu và vẽ biểu đồ, dự án này xây dựng **một pipeline phân tích dữ liệu hoàn chỉnh**.
 
-✔ Designing a **Star Schema data model** for scalable analytics  
-✔ Creating **business-oriented KPIs using DAX**  
-✔ Performing **multi-dimensional analysis** across customers, products, sellers, and geography  
-✔ Delivering insights through a **structured analytical dashboard**
+Các điểm nổi bật:
+
+✔ Lưu trữ dữ liệu trong cơ sở dữ liệu PostgreSQL
+✔ Tiền xử lý dữ liệu bằng SQL trước khi đưa vào Power BI
+✔ Thiết kế mô hình dữ liệu theo **Star Schema**
+✔ Xây dựng hệ thống **KPI bằng DAX**
+✔ Dashboard phân tích nhiều trang phục vụ insight kinh doanh
+✔ **Quản lý toàn bộ measure trong một bảng riêng (Measure Table)** để tối ưu mô hình
 
 ---
 
 # 📂 Dataset
 
-Dataset used:
+Dataset sử dụng: **Olist Brazilian E-commerce Dataset**
 
-Olist Brazilian E-commerce Dataset
+Bộ dữ liệu bao gồm thông tin về:
 
-The dataset includes information about:
+* Orders
+* Customers
+* Sellers
+* Products
+* Payments
+* Reviews
+* Geolocation
 
-- Orders
-- Customers
-- Sellers
-- Products
-- Payments
-- Reviews
-- Geolocation
+Dataset có:
 
-It contains more than **100k orders and nearly 100k customers**, enabling comprehensive analysis of an e-commerce ecosystem.
+* ~100,000 đơn hàng
+* ~96,000 khách hàng
+* nhiều seller và product category
+
+Điều này giúp mô phỏng một **marketplace thực tế**.
 
 ---
 
-# 🧠 Data Modeling
+# 🔌 Nguồn dữ liệu & Kết nối
 
-Instead of directly visualizing raw tables, the dataset was redesigned into a **Star Schema model**.
+Thay vì import trực tiếp file CSV vào Power BI, dữ liệu được:
 
-This approach improves:
+1️⃣ Lưu trữ trong **PostgreSQL database**
 
-- query performance
-- scalability
-- analytical clarity
+2️⃣ Tiền xử lý bằng **SQL**
 
-### Fact Tables
+3️⃣ Sau đó Power BI kết nối trực tiếp vào database
 
-- fact_order_items
-- fact_payments
-- fact_reviews
+Thông tin kết nối:
 
-### Dimension Tables
+Host: localhost
+Database: brazil_e_commerce
 
-- dim_products
-- dim_sellers
-- dim_customers
-- dim_orders
-- dim_date
-- dim_locations
+Cách tiếp cận này giúp:
+
+* dữ liệu được quản lý tốt hơn
+* dễ mở rộng
+* mô phỏng kiến trúc data thực tế trong doanh nghiệp
+
+---
+
+# 🧹 Tiền xử lý dữ liệu bằng PostgreSQL
+
+Trước khi đưa dữ liệu vào Power BI, dữ liệu được xử lý bằng SQL trong PostgreSQL.
+
+Các bước tiền xử lý bao gồm:
+
+• Loại bỏ dữ liệu trùng lặp
+• Xử lý giá trị thiếu (missing values)
+• Chuẩn hóa format ngày tháng
+• Tổ chức lại các bảng dữ liệu quan hệ
+• Chuẩn bị khóa chính và khóa ngoại
+
+Việc tiền xử lý ở tầng database giúp:
+
+* dữ liệu sạch hơn
+* Power BI chạy nhanh hơn
+* dễ quản lý pipeline dữ liệu
+
+---
+
+# 🏗 Kiến trúc dữ liệu
+
+Pipeline của dự án:
+
+Raw Dataset
+↓
+PostgreSQL Database
+↓
+Data Cleaning bằng SQL
+↓
+Data Modeling trong Power BI
+↓
+Dashboard phân tích
+
+---
+
+# 🧠 Data Modeling (Star Schema)
+
+Thay vì dùng trực tiếp các bảng raw, dữ liệu được thiết kế lại theo **Star Schema**.
+
+Mô hình này giúp:
+
+* tối ưu hiệu suất query
+* dễ mở rộng phân tích
+* phù hợp cho BI dashboard
+
+## Fact Tables
+
+* fact_order_items
+* fact_payments
+* fact_reviews
+
+## Dimension Tables
+
+* dim_products
+* dim_seller
+* dim_customer
+* dim_order
+* dim_date
+* dim_locations
 
 ## Data Model
 
 ![Data Model](screenshot/data_model.png)
 
-This model allows flexible analysis across **time, geography, product categories, and seller performance**.
+---
+
+# 📈 Hệ thống KPI (DAX)
+
+Các KPI quan trọng được xây dựng bằng **DAX**:
+
+* Total Revenue
+* Total Orders
+* Total Customers
+* Average Order Value
+* Average Review Score
+* Orders per Customer
+* Revenue per Seller
+* Average Delivery Time
+
+Những KPI này giúp đánh giá:
+
+* hiệu suất marketplace
+* hành vi mua hàng
+* chất lượng dịch vụ
 
 ---
 
-# 📈 Key Business Metrics (DAX)
+# ⭐ Điểm độc đáo: Measure Table
 
-Several analytical measures were implemented using DAX.
+Một điểm đặc biệt của dự án là **tạo riêng một bảng Measure để quản lý toàn bộ KPI**.
 
-Examples include:
+Thay vì tạo measure rải rác trong các bảng dữ liệu, toàn bộ measure được đặt trong một bảng riêng có tên:
 
-### Total Revenue
+measure
 
-SUM of all payment values across orders.
+Các measure được **phân nhóm theo folder** để dễ quản lý:
 
-### Total Orders
+## Overview
 
-Number of unique orders placed on the platform.
+* Total Revenue
+* Total Orders
+* Total Customers
+* Average Order Value
+* Average Review Score
 
-### Total Customers
+## Customer Insights
 
-Distinct customers who made purchases.
+* Active Customers
+* Customer Total Spend
+* Orders per Customer
+* Total Items Sold
 
-### Average Order Value (AOV)
+## Product
 
-Revenue per order.
+* Total Product Categories
 
-### Average Review Score
+## Seller Performance
 
-Average customer satisfaction rating across all orders.
+* Total Sellers
+* Seller Orders
+* Revenue per Seller
+* Orders per Seller
+* Average Seller Rating
+* Average Delivery Time
 
-These metrics allow monitoring of **overall marketplace performance and customer experience**.
+Cách tổ chức này giúp:
+
+✔ mô hình dữ liệu sạch hơn
+✔ dễ quản lý KPI khi dự án lớn
+✔ dashboard dễ bảo trì và mở rộng
+
+Đây là **best practice thường được sử dụng trong các dự án BI chuyên nghiệp**.
 
 ---
 
-# 📊 Dashboard Structure
+# 📊 Dashboard
 
-The Power BI dashboard contains **four analytical pages**.
+Dashboard được thiết kế thành **4 trang phân tích chính**.
 
 ---
 
@@ -112,21 +215,13 @@ The Power BI dashboard contains **four analytical pages**.
 
 ![Overview](screenshot/overview_dashboard.png)
 
-This page provides a high-level overview of the marketplace.
+Trang này cung cấp cái nhìn tổng quan về marketplace:
 
-Key indicators include:
-
-- Total Revenue
-- Total Orders
-- Total Customers
-- Average Order Value
-- Average Review Score
-
-Key insights:
-
-- The platform generated approximately **13.6M in total revenue**
-- Nearly **100k orders** were processed
-- Customer satisfaction remains relatively high with an average review score of **4.1**
+* Total Revenue
+* Total Orders
+* Total Customers
+* Average Order Value
+* Average Review Score
 
 ---
 
@@ -134,19 +229,11 @@ Key insights:
 
 ![Customer Insights](screenshot/customer_insights.png)
 
-This page explores **customer behavior and distribution**.
+Phân tích hành vi khách hàng:
 
-Analysis includes:
-
-- Customer distribution by location
-- Customer segmentation based on order value
-- Monthly customer growth
-
-Insights discovered:
-
-- A large portion of customers are concentrated in **major Brazilian states**
-- Most customers belong to the **low to medium value segments**
-- Customer growth shows fluctuations across months
+* phân bố khách hàng theo khu vực
+* giá trị chi tiêu
+* số đơn hàng trung bình
 
 ---
 
@@ -154,19 +241,11 @@ Insights discovered:
 
 ![Product Performance](screenshot/product_performance.png)
 
-This section analyzes **product category performance**.
+Phân tích hiệu suất sản phẩm:
 
-Key analysis:
-
-- Top product categories by revenue
-- Distribution of product sales
-- Price vs revenue relationship
-
-Insights:
-
-- Categories such as **Health & Beauty** and **Watches & Gifts** generate the highest revenue
-- Product sales are heavily concentrated in certain categories
-- Higher price does not always translate to higher sales volume
+* top category theo doanh thu
+* phân bố sản phẩm
+* mối quan hệ giữa giá và doanh thu
 
 ---
 
@@ -174,58 +253,52 @@ Insights:
 
 ![Seller Performance](screenshot/seller_performance.png)
 
-This page focuses on **seller contribution and operational performance**.
+Phân tích seller:
 
-Key analysis:
-
-- Top sellers by revenue
-- Seller delivery performance
-- Revenue concentration among sellers
-
-Insights:
-
-- A small number of sellers contribute disproportionately to total revenue
-- Seller efficiency varies significantly across the platform
-- Delivery performance plays a role in customer satisfaction
+* doanh thu theo seller
+* số đơn hàng
+* chất lượng dịch vụ
+* thời gian giao hàng
 
 ---
 
-# 🔍 Key Analytical Findings
+# 🔍 Insight quan trọng
 
-From the analysis, several patterns emerge:
+Một số insight rút ra từ dữ liệu:
 
-• Marketplace revenue is concentrated among **a limited number of sellers**  
-• Certain product categories dominate overall sales performance  
-• Customer distribution is highly **geographically concentrated**  
-• Operational performance such as delivery time can influence review scores  
-
-These findings can support **strategic decisions for marketplace growth and seller management**.
+• Doanh thu tập trung vào một số seller lớn
+• Một số category sản phẩm chiếm phần lớn doanh thu
+• Khách hàng tập trung ở một số bang lớn của Brazil
+• Thời gian giao hàng có thể ảnh hưởng đến đánh giá của khách hàng
 
 ---
 
-# 🛠 Tools & Technologies
+# 🛠 Công nghệ sử dụng
 
-Tools used in this project:
+Dự án sử dụng các công nghệ:
 
-- Power BI
-- DAX
-- Data Modeling
-- Data Visualization
+* PostgreSQL
+* SQL
+* Power BI
+* DAX
+* Data Modeling
+* Data Visualization
 
 ---
 
-# 💡 Skills Demonstrated
+# 💡 Kỹ năng thể hiện trong dự án
 
-This project demonstrates key data analyst skills:
+Dự án thể hiện các kỹ năng của một Data Analyst:
 
-- Data modeling using star schema
-- Business KPI design
-- Data visualization
-- Analytical storytelling
-- Insight generation
+* Database management
+* Data preprocessing bằng SQL
+* Data modeling (Star Schema)
+* Xây dựng KPI
+* Data visualization
+* Business insight
 
 ---
 
 # 👨‍💻 Author
 
-nguyenkien100604
+Portfolio Project – Data Analysis
