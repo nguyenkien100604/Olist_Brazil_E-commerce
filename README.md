@@ -70,6 +70,7 @@ Cách tiếp cận này giúp:
 ---
 
 # 🧹 Tiền xử lý dữ liệu bằng PostgreSQL
+![Datasource](screenshot/datasource.png)
 
 Trước khi đưa dữ liệu vào Power BI, dữ liệu được xử lý bằng SQL trong PostgreSQL.
 
