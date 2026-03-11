@@ -1,178 +1,231 @@
-# Brazil E-commerce Data Analysis (Power BI)
+# 📊 Brazilian E-commerce Data Analysis (Power BI)
 
-## Project Overview
+An end-to-end data analysis project built using Power BI on the Brazilian Olist E-commerce dataset.
 
-This project analyzes the Brazilian E-commerce dataset from Olist using **Power BI**.  
-The goal is to uncover business insights related to **sales performance, customer behavior, product trends, and seller performance**.
+The objective of this project is to analyze **sales performance, customer behavior, product trends, and seller efficiency** to uncover actionable business insights.
 
-The project includes:
-
-- Data modeling using a **Star Schema**
-- Data transformation
-- DAX measures
-- Interactive dashboards
+This project demonstrates the **full data analysis workflow**, from data modeling to dashboard storytelling.
 
 ---
 
-# Dataset
+# 🚀 Project Highlights
 
-Dataset Source
+Unlike many typical Power BI dashboards that simply visualize imported data, this project focuses on:
+
+✔ Designing a **Star Schema data model** for scalable analytics  
+✔ Creating **business-oriented KPIs using DAX**  
+✔ Performing **multi-dimensional analysis** across customers, products, sellers, and geography  
+✔ Delivering insights through a **structured analytical dashboard**
+
+---
+
+# 📂 Dataset
+
+Dataset used:
 
 Olist Brazilian E-commerce Dataset
 
-https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
-
-The dataset contains information about:
+The dataset includes information about:
 
 - Orders
-- Products
 - Customers
 - Sellers
+- Products
 - Payments
 - Reviews
 - Geolocation
 
+It contains more than **100k orders and nearly 100k customers**, enabling comprehensive analysis of an e-commerce ecosystem.
+
 ---
 
-# Data Modeling
+# 🧠 Data Modeling
 
-The dataset was modeled using a **Star Schema** to optimize analytics performance.
+Instead of directly visualizing raw tables, the dataset was redesigned into a **Star Schema model**.
 
-## Fact Tables
+This approach improves:
 
-fact_order_items  
-fact_payments  
-fact_reviews  
+- query performance
+- scalability
+- analytical clarity
 
-## Dimension Tables
+### Fact Tables
 
-dim_products  
-dim_seller  
-dim_customer  
-dim_order  
-dim_date  
-dim_locations  
+- fact_order_items
+- fact_payments
+- fact_reviews
 
-### Data Model
+### Dimension Tables
+
+- dim_products
+- dim_sellers
+- dim_customers
+- dim_orders
+- dim_date
+- dim_locations
+
+## Data Model
 
 ![Data Model](screenshot/data_model.png)
 
----
-
-# Key Metrics (DAX)
-
-Some important measures created:
-
-Total Revenue
+This model allows flexible analysis across **time, geography, product categories, and seller performance**.
 
 ---
 
-# Dashboard Pages
+# 📈 Key Business Metrics (DAX)
 
-The dashboard contains **4 main pages**.
+Several analytical measures were implemented using DAX.
+
+Examples include:
+
+### Total Revenue
+
+SUM of all payment values across orders.
+
+### Total Orders
+
+Number of unique orders placed on the platform.
+
+### Total Customers
+
+Distinct customers who made purchases.
+
+### Average Order Value (AOV)
+
+Revenue per order.
+
+### Average Review Score
+
+Average customer satisfaction rating across all orders.
+
+These metrics allow monitoring of **overall marketplace performance and customer experience**.
 
 ---
 
-# 1. Overview Dashboard
+# 📊 Dashboard Structure
 
-![Overview Dashboard](screenshot/overview_dashboard.png)
-Key metrics:
-
-Total Revenue  
-Total Orders  
-Total Customers  
-Average Order Value  
-Average Review Score  
-
-Insights:
-
-- Revenue peaked in mid-year and declined toward the end of the year.
-- São Paulo contributes the highest revenue among states.
-- Credit card is the dominant payment method.
+The Power BI dashboard contains **four analytical pages**.
 
 ---
 
-# 2. Customer Insights
+# 1️⃣ Overview Dashboard
+
+![Overview](screenshot/overview_dashboard.png)
+
+This page provides a high-level overview of the marketplace.
+
+Key indicators include:
+
+- Total Revenue
+- Total Orders
+- Total Customers
+- Average Order Value
+- Average Review Score
+
+Key insights:
+
+- The platform generated approximately **13.6M in total revenue**
+- Nearly **100k orders** were processed
+- Customer satisfaction remains relatively high with an average review score of **4.1**
+
+---
+
+# 2️⃣ Customer Insights
 
 ![Customer Insights](screenshot/customer_insights.png)
 
-Analysis:
+This page explores **customer behavior and distribution**.
 
-Customer distribution by city  
-Customer segmentation (Low / Medium / High / VIP)  
-Monthly customer trend  
-Top states by customer count  
+Analysis includes:
 
-Insights:
+- Customer distribution by location
+- Customer segmentation based on order value
+- Monthly customer growth
 
-- São Paulo has the largest customer base.
-- Most customers belong to the **Low Value segment**.
-- Customer growth slowed toward the end of the year.
+Insights discovered:
+
+- A large portion of customers are concentrated in **major Brazilian states**
+- Most customers belong to the **low to medium value segments**
+- Customer growth shows fluctuations across months
 
 ---
 
-# 3. Product Performance
+# 3️⃣ Product Performance
 
 ![Product Performance](screenshot/product_performance.png)
 
-Analysis:
+This section analyzes **product category performance**.
 
-Top product categories by revenue  
-Product sales distribution  
-Price vs revenue relationship  
+Key analysis:
+
+- Top product categories by revenue
+- Distribution of product sales
+- Price vs revenue relationship
 
 Insights:
 
-- Health & Beauty and Watches & Gifts generate the highest revenue.
-- Most products are sold in the lower price range.
-- Higher price does not necessarily mean higher revenue.
+- Categories such as **Health & Beauty** and **Watches & Gifts** generate the highest revenue
+- Product sales are heavily concentrated in certain categories
+- Higher price does not always translate to higher sales volume
 
 ---
 
-# 4. Seller Performance
+# 4️⃣ Seller Performance
 
 ![Seller Performance](screenshot/seller_performance.png)
-Analysis:
 
-Top sellers by revenue  
-Slowest sellers by delivery time  
-Seller rating vs revenue  
+This page focuses on **seller contribution and operational performance**.
+
+Key analysis:
+
+- Top sellers by revenue
+- Seller delivery performance
+- Revenue concentration among sellers
 
 Insights:
 
-- A small number of sellers generate a large portion of total revenue.
-- Sellers with better ratings tend to achieve higher revenue.
-- Some sellers have significantly longer delivery times.
+- A small number of sellers contribute disproportionately to total revenue
+- Seller efficiency varies significantly across the platform
+- Delivery performance plays a role in customer satisfaction
 
 ---
 
-# Demo Video
+# 🔍 Key Analytical Findings
 
-30-second dashboard walkthrough
+From the analysis, several patterns emerge:
 
-demo/dashboard_demo.mp4
+• Marketplace revenue is concentrated among **a limited number of sellers**  
+• Certain product categories dominate overall sales performance  
+• Customer distribution is highly **geographically concentrated**  
+• Operational performance such as delivery time can influence review scores  
 
----
-
-# Tools Used
-
-Power BI  
-DAX  
-Data Modeling  
-Data Visualization  
+These findings can support **strategic decisions for marketplace growth and seller management**.
 
 ---
 
-# Skills Demonstrated
+# 🛠 Tools & Technologies
 
-Data Cleaning  
-Data Modeling (Star Schema)  
-DAX Calculations  
-Business Insight Generation  
-Dashboard Design  
+Tools used in this project:
+
+- Power BI
+- DAX
+- Data Modeling
+- Data Visualization
 
 ---
 
-# Author
+# 💡 Skills Demonstrated
 
-Data Analyst Portfolio Project
+This project demonstrates key data analyst skills:
+
+- Data modeling using star schema
+- Business KPI design
+- Data visualization
+- Analytical storytelling
+- Insight generation
+
+---
+
+# 👨‍💻 Author
+
+nguyenkien100604
