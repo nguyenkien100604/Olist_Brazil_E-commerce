@@ -75,8 +75,7 @@ The dashboard contains **4 main pages**.
 
 # 1. Overview Dashboard
 
-![Overview](screenshots/overview_dashboard.png)
-
+![Overview Dashboard](screenshot/overview_dashboard.png)
 Key metrics:
 
 Total Revenue  
@@ -95,7 +94,7 @@ Insights:
 
 # 2. Customer Insights
 
-![Customer Insights](screenshots/customer_insights.png)
+![Customer Insights](screenshot/customer_insights.png)
 
 Analysis:
 
@@ -114,7 +113,7 @@ Insights:
 
 # 3. Product Performance
 
-![Product Performance](screenshots/product_performance.png)
+![Product Performance](screenshot/product_performance.png)
 
 Analysis:
 
@@ -132,8 +131,7 @@ Insights:
 
 # 4. Seller Performance
 
-![Seller Performance](screenshots/seller_performance.png)
-
+![Seller Performance](screenshot/seller_performance.png)
 Analysis:
 
 Top sellers by revenue  
