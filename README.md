@@ -55,7 +55,7 @@ dim_locations
 
 ### Data Model
 
-![Data Model](screenshots/data_model.png)
+![Data Model](screenshot/data_model.png)
 
 ---
 
